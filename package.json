@@ -1,0 +1,22 @@
+{
+  "name": "ai-reconstruction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "hello": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EKami/ai-reconstruction.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EKami/ai-reconstruction/issues"
+  },
+  "homepage": "https://github.com/EKami/ai-reconstruction#readme"
+}
