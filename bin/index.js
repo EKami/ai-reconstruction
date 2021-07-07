@@ -37,15 +37,20 @@ async function main(args) {
     })
 
     const overlay_buffer = overlay_canvas.toBuffer("image/png");
-    await sharp(wsi_buffer)
+    const combined = await sharp(wsi_buffer)
         .composite([{
             input: overlay_buffer
         }])
-        .rotate()
+        .toBuffer()
+
+    await sharp(combined)
         .png()
+        .rotate(90)
         .toFile(output_file, function (err) {
+        if (err !== null){
             console.log("Error: ", err)
-        });
+        }
+    });
     console.log(`Output available in ${output_file}`)
 }
 
