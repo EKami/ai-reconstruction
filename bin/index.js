@@ -14,7 +14,7 @@ async function main(args) {
     const full_size_dim = patches_positions["wsi_full_resolution"]
 
     console.log(`Using: ${args.wsi}!`);
-    const wsi_buffer = await sharp(wsi).resize({ height: max_thumb_size}).png().toBuffer()
+    const wsi_buffer = await sharp(wsi).resize({height: max_thumb_size}).png().toBuffer()
     const wsi_img = new Image()
     wsi_img.src = wsi_buffer
 
@@ -37,10 +37,15 @@ async function main(args) {
     })
 
     const overlay_buffer = overlay_canvas.toBuffer("image/png");
-    // https://christoshrousis.com/08-using-node-sharp-to-stack-and-overlay-images-over-each-other-to-create-fun-composites/
-    // await sharp(overlay_img).png().toFile(output_file)
-    // fs.writeFileSync(output_file, overlay_buffer);
-
+    await sharp(wsi_buffer)
+        .composite([{
+            input: overlay_buffer
+        }])
+        .rotate()
+        .png()
+        .toFile(output_file, function (err) {
+            console.log("Error: ", err)
+        });
     console.log(`Output available in ${output_file}`)
 }
 
