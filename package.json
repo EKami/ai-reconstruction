@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/EKami/ai-reconstruction#readme",
   "dependencies": {
+    "fs": "^0.0.1-security",
     "sharp": "^0.28.3",
     "yargs": "^17.0.1"
   }
